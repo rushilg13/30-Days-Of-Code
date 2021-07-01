@@ -2,6 +2,7 @@
 # nums[i] + nums[j] + nums[k] == 0.
 # Notice that the solution set must not contain duplicate triplets.
 
+# Approach - 1
 arr = [-4, -1, -1, 0, 1, 2]
 res = []
 arr.sort()
@@ -26,4 +27,15 @@ for i in range(len(arr)-2):
                 k-=1
             j=j+1
             k=k-1
+print(res)
+
+
+# Approach -2
+arr = [-4, -1, -1, 0, 1, 2]
+res = []
+for i in range(0, len(arr)-2):
+    for j in range(1, len(arr)-1):
+        for k in range(2, len(arr)):
+            if(arr[i] + arr[j] + arr[k] == 0 and (i != j and i != k and j != k)):
+                res.append([arr[i], arr[j], arr[k]])
 print(res)
