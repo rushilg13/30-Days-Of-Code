@@ -17,7 +17,6 @@ arr.sort()
 front = 0
 end = len(arr)-1
 while(arr[front] + arr[end] != target):
-    print(front, end)
     if(arr[front] + arr[end] > target):
         end -=1
     if(arr[front] + arr[end] < target):
