@@ -29,7 +29,8 @@ class LinkedList:
                 temp = temp.next
             print("NULL")
     
-    def DeleteFromEnd (self, n, length):
+    # Approach - 1 - Using a single Pointer - Wastes Memory
+    def DeleteFromEnd1 (self, n, length):
         point1 = self.start
         count = length - n
         if length == n:
@@ -39,6 +40,22 @@ class LinkedList:
             count -= 1
             point1 = point1.next
         point1.next = point1.next.next
+    
+    # Approach - 2 - Using a double Pointer - Memory Efficient
+    def DeleteFromEnd2 (self, n, length):
+        point1 = self.start
+        point2 = self.start
+        count = length - n
+        if length == n:
+            self.start = None
+            return ("LinkedList is Empty!")
+        while count != 1:
+            count -= 1
+            point1 = point1.next
+            point2 = point2.next
+        point1.next = point1.next.next
+        point2 = point2.next
+        point2.next = None
 
 myList=LinkedList()
 arr = [1, 2, 3 ,4]
@@ -46,5 +63,5 @@ length = len(arr)
 for i in arr:
     myList.append(i)
 myList.view()
-myList.DeleteFromEnd(4, length)
+myList.DeleteFromEnd2 (2, length)
 myList.view()
