@@ -27,17 +27,24 @@ class LinkedList:
             while temp != None:
                 print(temp.value, end=" -> ")
                 temp = temp.next
-            print("End")
+            print("NULL")
     
-    def DeleteFromEnd (self, n):
-        pass
+    def DeleteFromEnd (self, n, length):
+        point1 = self.start
+        count = length - n
+        if length == n:
+            self.start = None
+            return ("LinkedList is Empty!")
+        while count != 1:
+            count -= 1
+            point1 = point1.next
+        point1.next = point1.next.next
 
 myList=LinkedList()
-myList.append(1)
-myList.append(2)
-myList.append(3)
-myList.append(4)
-arr = [9, 8, 7 ,6]
+arr = [1, 2, 3 ,4]
+length = len(arr)
 for i in arr:
     myList.append(i)
+myList.view()
+myList.DeleteFromEnd(4, length)
 myList.view()
