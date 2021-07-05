@@ -42,7 +42,10 @@ class LinkedList:
                 temp2 = holder
                 temp1 = temp1.next.next
             else:
-                pass
+                holder = holder.next
+                temp2.next = temp1
+                temp1 = temp2
+                temp2 = holder
 
 List1 = LinkedList()
 List1.append(1)
@@ -50,9 +53,8 @@ List1.append(3)
 List1.append(5)
 List1.view()
 List2 = LinkedList()
-List2.append(2)
-List2.append(4)
-List2.append(6)
+List2.append(-1)
+List2.append(0)
 List2.view()
 List1.merge(List2)
-List1.view()
+List2.view()
