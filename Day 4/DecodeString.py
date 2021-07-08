@@ -3,13 +3,29 @@
 # Note that k is guaranteed to be a positive integer.
 # You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.
 
-s = "3[a]2[bc]"
-num = 0
-front = -1
-rear = -1
+s = "3[a]2[c]"
+arr = []
+count = 0
+string = ""
+res = ""
 for i in s:
-    if (i != "[") and (i != "]"):
-        if (i.isdigit()):
-            num = int(i)
-        else:
-            print(i*num, end='')
+    arr.append(i)
+arr.reverse()
+print(arr)
+top = 0
+while top != len(arr):
+    if arr[top] == ']':
+        top += 1
+        count -= 1
+    if arr[top] != "[":
+        string = string + arr[top]
+        top += 1
+    if arr[top] == "[":
+        top += 1
+        count += 1
+    if arr[top].isdigit() and count == 0:
+        res += (int(arr[top])*string)
+        string = ""
+        top += 1
+for i in range (len(res)-1, -1, -1):
+    print(res[i], end='')
